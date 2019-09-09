@@ -277,7 +277,7 @@ p {
     display: inline-block;
     min-width: 5em;
     padding: .5em;
-    background: #283F50;
+    background: #841111;
     color: #ffffff;
     font-weight: 700;
     text-align: center;
@@ -293,7 +293,7 @@ p {
     display: inline-block;
     min-width: 5em;
     padding: .5em;
-    background: #283F50;
+    background: #841111;
     color: #ffffff;
     font-weight: 700;
     text-align: center;
@@ -313,7 +313,7 @@ p {
     height: 0;
     margin-left: -15px;
     border: 15px solid transparent;
-    border-top-color: #283F50
+    border-top-color: #841111
 }
 
 .chartist-chart {
