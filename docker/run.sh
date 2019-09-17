@@ -1,11 +1,31 @@
 #!/bin/bash
 
+# If argument is provided, output "release" ZIP file to stdout
+if [[ "${1}" == "--build-release" ]]; then
+	zip -v -r -9 - \
+		gophish \
+		VERSION \
+		config.json \
+		templates \
+		static \
+		db
+
+	exit 0
+fi
+
+# ------------------------------------------------
+touch config.json.tmp
+
 # set config for admin_server
 if [ -n "${ADMIN_LISTEN_URL+set}" ] ; then
     jq -r \
         --arg ADMIN_LISTEN_URL "${ADMIN_LISTEN_URL}" \
         '.admin_server.listen_url = $ADMIN_LISTEN_URL' config.json > config.json.tmp && \
         cat config.json.tmp > config.json
+
+else
+	# If no listed option is specified, default to 0.0.0.0
+	sed -i 's/127.0.0.1/0.0.0.0/g' config.json
 fi
 if [ -n "${ADMIN_USE_TLS+set}" ] ; then
     jq -r \
