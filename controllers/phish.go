@@ -205,6 +205,10 @@ func (ps *PhishingServer) PhishHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	w.Header().Set("X-Server", config.ServerName) // Useful for checking if this is a GoPhish server (e.g. for campaign reporting plugins)
+	if (ps.config.Identifier != "") {
+		w.Header().Set("X-Awareness-Assessment", "true")
+		w.Header().Set("X-Awareness-ID", ps.config.Identifier)
+	}
 	var ptx models.PhishingTemplateContext
 	// Check for a preview
 	if preview, ok := ctx.Get(r, "result").(models.EmailRequest); ok {

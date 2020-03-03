@@ -15,10 +15,11 @@ type AdminServer struct {
 
 // PhishServer represents the Phish server configuration details
 type PhishServer struct {
-	ListenURL string `json:"listen_url"`
-	UseTLS    bool   `json:"use_tls"`
-	CertPath  string `json:"cert_path"`
-	KeyPath   string `json:"key_path"`
+	ListenURL  string `json:"listen_url"`
+	UseTLS     bool   `json:"use_tls"`
+	CertPath   string `json:"cert_path"`
+	KeyPath    string `json:"key_path"`
+	Identifier string `json:"identifier"`
 }
 
 // LoggingConfig represents configuration details for Gophish logging.
@@ -43,7 +44,7 @@ type Config struct {
 var Version = ""
 
 // ServerName is the server type that is returned in the transparency response.
-const ServerName = "gophish"
+const ServerName = "goofisk"
 
 // LoadConfig loads the configuration from the specified filepath
 func LoadConfig(filepath string) (*Config, error) {

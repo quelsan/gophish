@@ -71,6 +71,12 @@ if [ -n "${PHISH_KEY_PATH+set}" ] ; then
         '.phish_server.key_path = $PHISH_KEY_PATH' config.json > config.json.tmp && \
         cat config.json.tmp > config.json
 fi
+if [ -n "${PHISH_IDENTIFIER+set}" ] ; then
+    jq -r \
+        --arg PHISH_IDENTIFIER "${PHISH_IDENTIFIER}" \
+        '.phish_server.identifier = $PHISH_IDENTIFIER' config.json > config.json.tmp && \
+        cat config.json.tmp > config.json
+fi
 
 # set contact_address
 if [ -n "${CONTACT_ADDRESS+set}" ] ; then
